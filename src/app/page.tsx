@@ -1,9 +1,9 @@
-import Input from "components/Inputs/Input";
+import CurrencyInput from "components/Inputs/CurrencyInput";
 
 export default function Home() {
   return (
     <main className="text-purple-primary">
-      <Input error errorMessage="Teste" placeholder="Teste" />
+      <CurrencyInput />
     </main>
   );
 }
