@@ -3,7 +3,7 @@ import { ComponentPropsWithoutRef } from "react";
 import { twMerge } from "tailwind-merge";
 
 const Button = ({
-  className,
+  className = "",
   children,
   ...rest
 }: ComponentPropsWithoutRef<"button">) => {

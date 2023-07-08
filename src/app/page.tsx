@@ -1,9 +1,9 @@
-import Button from "components/Button";
+import Input from "components/Inputs/Input";
 
 export default function Home() {
   return (
     <main className="text-purple-primary">
-      <Button>Clicar</Button>
+      <Input error errorMessage="Teste" placeholder="Teste" />
     </main>
   );
 }
