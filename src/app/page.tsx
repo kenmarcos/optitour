@@ -1,3 +1,9 @@
+import Button from "components/Button";
+
 export default function Home() {
-  return <main className="text-purple-primary">Home Page</main>;
+  return (
+    <main className="text-purple-primary">
+      <Button>Clicar</Button>
+    </main>
+  );
 }
