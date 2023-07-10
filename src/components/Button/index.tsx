@@ -1,16 +1,18 @@
 import { ComponentPropsWithoutRef } from "react";
 
-import { twMerge } from "tailwind-merge";
+import { useButton } from "./useButton";
+
+interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
+  variant: "primary" | "outlined" | "danger";
+}
 
 const Button = ({
+  variant = "primary",
   className = "",
   children,
   ...rest
-}: ComponentPropsWithoutRef<"button">) => {
-  const buttonClassName = twMerge(
-    "rounded-lg bg-purple-primary text-white p-2 text-sm font-medium shadow transition-all hover:bg-purple-dark",
-    className
-  );
+}: ButtonProps) => {
+  const { buttonClassName } = useButton({ variant, className });
 
   return (
     <button {...rest} className={buttonClassName}>
