@@ -22,6 +22,9 @@ module.exports = {
           primary: "#FE3838",
         },
       },
+      backgroundImage: {
+        hero: "url(/world-map.png)",
+      },
     },
   },
   plugins: [],
