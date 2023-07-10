@@ -7,9 +7,9 @@ import DatePickerComponent, {
 } from "react-datepicker";
 
 import ptBR from "date-fns/locale/pt-BR";
-import { twMerge } from "tailwind-merge";
 
 import "react-datepicker/dist/react-datepicker.css";
+import { useDatePicker } from "./useDatePicker";
 
 registerLocale("pt-BR", ptBR);
 
@@ -27,11 +27,7 @@ const DatePicker = (
   }: DatePickerProps,
   ref: LegacyRef<HTMLInputElement> | undefined
 ) => {
-  const datePickerClassName = twMerge(
-    "w-full rounded-lg border border-gray-primary p-2 text-sm font-normal text-gray-dark placeholder-black placeholder-opacity-20 outline-none transition-all focus:ring-1 focus:ring-primary",
-    error ? "border-red-primary" : "",
-    className
-  );
+  const { datePickerClassName } = useDatePicker({ error, className });
 
   return (
     <div className="flex w-full flex-col">
