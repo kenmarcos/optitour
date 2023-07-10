@@ -34,7 +34,7 @@ const DatePicker = (
   );
 
   return (
-    <div className="flex flex-col">
+    <div className="flex w-full flex-col">
       <DatePickerComponent
         {...rest}
         className={datePickerClassName}
