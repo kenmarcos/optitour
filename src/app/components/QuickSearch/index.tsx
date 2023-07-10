@@ -7,19 +7,15 @@ import {
   HiHomeModern,
 } from "react-icons/hi2";
 
+import SectionHeader from "../SectionHeader";
+
 const QuickSearch = () => {
   return (
     <section className="container mx-auto p-5 pb-0">
-      <div className="flex items-center gap-2 mb-5">
-        <hr className="basis-full border-gray-dark" />
-        <h2 className="whitespace-nowrap text-gray-dark">
-          Tente pesquisar por
-        </h2>
-        <hr className="basis-full border-gray-dark" />
-      </div>
+      <SectionHeader title="Tente pesquisar por" />
 
       <nav>
-        <ul className="flex overflow-y-hidden gap-2 justify-between">
+        <ul className="flex overflow-y-hidden gap-2 justify-between lg:justify-around">
           <li className="basis-20 shrink-0 text-gray-dark text-sm lg:text-base">
             <Link href="#" className="flex flex-col items-center">
               <HiBuildingOffice2 size={40} />
