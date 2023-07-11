@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 import Button from "components/Button";
@@ -7,7 +8,14 @@ const TripLocation = () => {
     <section className="p-5 text-purple-dark">
       <h2 className="font-semibold mb-2">Localização</h2>
 
-      <div className="w-[353px] h-[246px] bg-red-500 mb-5"></div>
+      <div className="h-[246px] relative rounded overflow-hidden mb-2">
+        <Image
+          src="/map-mobile.png"
+          alt="Mapa para mobile"
+          fill
+          className="object-cover"
+        />
+      </div>
 
       <h3 className="mb-2 text-sm font-semibold">
         Paraty, Rio de Janeiro, Brasil
