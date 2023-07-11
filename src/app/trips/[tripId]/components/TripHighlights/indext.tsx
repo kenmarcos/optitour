@@ -6,7 +6,7 @@ interface TripHighLightsProps {
 
 const TripHighlights = ({ highlights }: TripHighLightsProps) => {
   return (
-    <section className="p-5 flex-wrap">
+    <section className="p-5 flex-wrap lg:pl-0">
       <h2 className="text-purple-dark font-semibold mb-2 lg:text-xl">
         Destaques
       </h2>
