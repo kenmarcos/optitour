@@ -11,13 +11,13 @@ interface TripItemProps {
 
 const TripItem = ({ trip }: TripItemProps) => {
   return (
-    <Link href={`/trips/${trip.id}`} className="block">
+    <Link href={`/trips/${trip.id}`} className="block group">
       <div className="relative h-[280px] mb-3">
         <Image
           src={trip.coverImage}
           alt={trip.name}
           fill
-          className="object-cover rounded-2xl"
+          className="object-cover rounded-2xl transition-all group-hover:scale-[1.02]"
         />
       </div>
 
