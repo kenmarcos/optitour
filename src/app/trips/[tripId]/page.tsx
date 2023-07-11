@@ -1,5 +1,6 @@
 import TripDescription from "./components/TripDescription";
 import TripHeader from "./components/TripHeader";
+import TripHighlights from "./components/TripHighlights/indext";
 import TripReservation from "./components/TripReservation";
 
 interface TripDetailsProps {
@@ -14,6 +15,8 @@ const TripDetails = ({ params }: TripDetailsProps) => {
       <TripReservation />
 
       <TripDescription />
+
+      <TripHighlights />
     </main>
   );
 };
