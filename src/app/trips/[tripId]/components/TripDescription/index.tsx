@@ -1,7 +1,7 @@
 const TripDescription = () => {
   return (
     <section className="p-5 pt-0">
-      <h2 className="text-purple-dark font-semibold mb-1">Sobre a viagem</h2>
+      <h2 className="text-purple-dark font-semibold mb-2">Sobre a viagem</h2>
 
       <p className="text-purple-dark text-xs leading-5">
         Venha e fique neste soberbo T2 duplex, no coração do centro histórico de
