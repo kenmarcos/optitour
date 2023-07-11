@@ -12,7 +12,7 @@ import QuickSearchItem from "./components/QuickSearchItem";
 
 const QuickSearch = () => {
   return (
-    <section className="container mx-auto p-5 pb-0">
+    <section className="p-5 pb-0">
       <SectionHeader title="Tente pesquisar por" />
 
       <nav>

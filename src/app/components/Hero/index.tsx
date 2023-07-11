@@ -7,7 +7,7 @@ import Input from "components/Inputs/Input";
 
 const Hero = () => {
   return (
-    <section className="bg-hero bg-cover bg-center bg-no-repeat container mx-auto p-5 pb-0 lg:py-28">
+    <section className="bg-hero bg-cover bg-center bg-no-repeat p-5 pb-0 lg:py-28">
       <h1 className="text-xl font-semibold mb-4 text-center lg:text-[40px] lg:mb-12">
         Encontre sua próxima{" "}
         <span className="text-purple-primary">viagem!</span>
