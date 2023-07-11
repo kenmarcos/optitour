@@ -3,7 +3,7 @@ import { ComponentPropsWithoutRef } from "react";
 import { useButton } from "./useButton";
 
 interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
-  variant: "primary" | "outlined" | "danger";
+  variant?: "primary" | "outlined" | "danger";
 }
 
 const Button = ({

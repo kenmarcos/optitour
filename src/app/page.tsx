@@ -4,7 +4,7 @@ import RecommendedTrips from "./components/RecommendedTrips";
 
 export default function Home() {
   return (
-    <main>
+    <main className="container mx-auto">
       <Hero />
       <QuickSearch />
       <RecommendedTrips />
