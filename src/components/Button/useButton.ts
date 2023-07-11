@@ -14,7 +14,11 @@ export const useButton = ({ variant, className }: useButtonProps) => {
       "bg-transparent text-red-primary border border-red-primary hover:bg-red-600 hover:text-white",
   };
 
-  const buttonClassName = twMerge(variantClasses[variant], className);
+  const buttonClassName = twMerge(
+    variantClasses[variant],
+    "rounded-lg p-2 text-sm font-medium shadow transition-all",
+    className
+  );
 
   return {
     buttonClassName,
