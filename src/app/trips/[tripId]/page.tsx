@@ -54,6 +54,8 @@ const TripDetails = async ({ params }: TripDetailsProps) => {
         </div>
       </div>
 
+      <hr className="hidden border-gray-primary my-5 lg:block" />
+
       <TripLocation />
     </main>
   );
