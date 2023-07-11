@@ -1,3 +1,4 @@
+import TripDescription from "./components/TripDescription";
 import TripHeader from "./components/TripHeader";
 import TripReservation from "./components/TripReservation";
 
@@ -11,6 +12,8 @@ const TripDetails = ({ params }: TripDetailsProps) => {
       <TripHeader />
 
       <TripReservation />
+
+      <TripDescription />
     </main>
   );
 };
