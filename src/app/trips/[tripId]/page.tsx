@@ -28,19 +28,31 @@ const TripDetails = async ({ params }: TripDetailsProps) => {
   return (
     <main className="container mx-auto">
       <TripHeader
-        coverImage={data?.coverImage}
-        imagesUrl={data?.imagesUrl}
-        name={data?.name}
+        coverImage={data.coverImage}
+        imagesUrl={data.imagesUrl}
+        name={data.name}
         countryCode={data.countryCode}
         location={data.location}
         pricePerDay={parseFloat(data.pricePerDay.toString())}
       />
 
-      <TripReservation />
+      <div className="lg:flex lg:mt-10 lg:gap-20">
+        <div className="lg:order-2">
+          <TripReservation
+            tripId={data.id}
+            pricePerDay={parseFloat(data.pricePerDay.toString())}
+            startDate={data.startDate}
+            endDate={data.endDate}
+            maxGuests={data.maxGuests}
+          />
+        </div>
 
-      <TripDescription />
+        <div className="lg:order-1">
+          <TripDescription description={data.description} />
 
-      <TripHighlights />
+          <TripHighlights highlights={data.highlights} />
+        </div>
+      </div>
 
       <TripLocation />
     </main>
