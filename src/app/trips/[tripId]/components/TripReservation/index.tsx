@@ -8,7 +8,7 @@ import Input from "components/Inputs/Input";
 
 const TripReservation = () => {
   return (
-    <section className="p-5 pb-10 border-b border-gray-dark">
+    <section className="p-5 pb-10">
       <form className="flex flex-col gap-4">
         <div className="flex gap-4">
           <DatePicker onChange={() => {}} placeholderText="Data de início" />
@@ -23,6 +23,8 @@ const TripReservation = () => {
         </div>
 
         <Button className="w-full">Reservar agora</Button>
+
+        <hr className="border-gray-primary mt-6" />
       </form>
     </section>
   );
