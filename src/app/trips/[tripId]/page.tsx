@@ -29,6 +29,7 @@ const TripDetails = async ({ params }: TripDetailsProps) => {
     <main className="container mx-auto">
       <TripHeader
         coverImage={data?.coverImage}
+        imagesUrl={data?.imagesUrl}
         name={data?.name}
         countryCode={data.countryCode}
         location={data.location}
