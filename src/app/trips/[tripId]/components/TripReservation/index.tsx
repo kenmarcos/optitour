@@ -24,7 +24,7 @@ const TripReservation = ({
   maxGuests,
 }: TripReservationProps) => {
   return (
-    <section className="p-5 pb-10 lg:pb-5 lg:w-[370px] lg:shadow lg:border lg:border-gray-primary lg:rounded-lg lg:sticky lg:top-[100px]">
+    <section className="p-5 pb-10 lg:pb-5 lg:w-[370px] lg:shadow lg:border lg:border-gray-primary lg:rounded-lg lg:sticky lg:top-0">
       <h2 className="text-gray-dark mb-4">
         <span className="text-purple-dark text-xl font-semibold">
           {formatPrice(pricePerDay)}
