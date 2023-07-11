@@ -1,25 +1,40 @@
+import Image from "next/image";
 import ReactCountryFlag from "react-country-flag";
 
-const TripHeader = () => {
+import { formatPrice } from "utils/format";
+
+interface TripHeaderProps {
+  coverImage: string;
+  name: string;
+  countryCode: string;
+  location: string;
+  pricePerDay: number;
+}
+
+const TripHeader = ({
+  coverImage,
+  name,
+  countryCode,
+  location,
+  pricePerDay,
+}: TripHeaderProps) => {
   return (
     <section>
-      <div className="bg-red-500 h-[208px] mb-5">IMAGEM</div>
+      <div className="h-[208px] mb-5 relative">
+        <Image src={coverImage} alt={name} fill className="object-cover" />
+      </div>
 
       <div className="text-gray-dark text-xs lg:text-sm space-y-1 px-5">
-        <h1 className="text-xl font-semibold text-purple-dark">
-          Nome do Hotel
-        </h1>
+        <h1 className="text-xl font-semibold text-purple-dark">{name}</h1>
 
         <div className="flex gap-1 items-center">
-          {/* <ReactCountryFlag countryCode={trip.countryCode} svg /> */}
-          <span>Bandeira</span>
-          <p>Rio de Janeiro, Brasil</p>
+          <ReactCountryFlag countryCode={countryCode} svg />
+          <p>{location}</p>
         </div>
 
         <p>
           <span className="text-purple-primary font-semibold">
-            {/* {formatPrice(parseFloat(trip.pricePerDay.toString()))} */}
-            R$ 250,00
+            {formatPrice(pricePerDay)}
           </span>{" "}
           por dia
         </p>
