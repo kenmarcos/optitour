@@ -5,7 +5,7 @@ const TripHeader = () => {
     <section>
       <div className="bg-red-500 h-[208px] mb-5">IMAGEM</div>
 
-      <div className="text-gray-dark text-xs lg:text-sm space-y-1">
+      <div className="text-gray-dark text-xs lg:text-sm space-y-1 px-5">
         <h1 className="text-xl font-semibold text-purple-dark">
           Nome do Hotel
         </h1>
