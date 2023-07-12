@@ -18,7 +18,9 @@ const TripHighlights = ({ highlights }: TripHighLightsProps) => {
               size={18}
               className="text-purple-primary inline mr-1"
             />
-            <span className="text-gray-dark text-xs lg:text-base">{item}</span>
+            <span className="text-gray-dark text-xs lg:align-middle lg:text-base">
+              {item}
+            </span>
           </li>
         ))}
       </ul>
