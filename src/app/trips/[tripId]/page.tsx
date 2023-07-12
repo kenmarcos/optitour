@@ -41,8 +41,8 @@ const TripDetails = async ({ params }: TripDetailsProps) => {
           <TripReservation
             tripId={data.id}
             pricePerDay={parseFloat(data.pricePerDay.toString())}
-            startDate={data.startDate}
-            endDate={data.endDate}
+            tripStartDate={data.startDate}
+            tripEndDate={data.endDate}
             maxGuests={data.maxGuests}
           />
         </div>
