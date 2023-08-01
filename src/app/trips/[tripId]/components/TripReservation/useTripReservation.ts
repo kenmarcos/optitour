@@ -3,7 +3,15 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
-export const useTripReservation = (maxGuests: number) => {
+interface UseTripReservationProps {
+  tripId: string;
+  maxGuests: number;
+}
+
+export const useTripReservation = ({
+  tripId,
+  maxGuests,
+}: UseTripReservationProps) => {
   const tripReservationSchema = z.object({
     startDate: z
       .date()
@@ -13,7 +21,7 @@ export const useTripReservation = (maxGuests: number) => {
       .date()
       .nullable()
       .refine((date) => !!date, "Data inválida"),
-    guests: z
+    guests: z.coerce
       .number()
       .positive("Quantidade inválida")
       .max(maxGuests, `Não pode ser maior do que ${maxGuests}`),
@@ -25,6 +33,7 @@ export const useTripReservation = (maxGuests: number) => {
     register,
     handleSubmit,
     watch,
+    setError,
     control,
     formState: { errors },
   } = useForm<TripReservationSchema>({
@@ -36,8 +45,36 @@ export const useTripReservation = (maxGuests: number) => {
     },
   });
 
-  const submitForm = (data: TripReservationSchema) => {
-    console.log(data);
+  const submitForm = async (data: TripReservationSchema) => {
+    const response = await fetch("/api/trips/check", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...data,
+        tripId,
+      }),
+    });
+
+    const responseData = await response.json();
+
+    if (
+      response.status === 409 &&
+      responseData.message === "Reserva já realizada"
+    ) {
+      setError("startDate", {
+        type: "manual",
+        message: "Está data já está reservada",
+      });
+
+      setError("endDate", {
+        type: "manual",
+        message: "Está data já está reservada",
+      });
+
+      return;
+    }
   };
 
   const startDateSelected = watch("startDate");

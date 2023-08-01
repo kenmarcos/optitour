@@ -34,7 +34,7 @@ const TripReservation = ({
     submitForm,
     startDateSelected,
     endDateSelected,
-  } = useTripReservation(maxGuests);
+  } = useTripReservation({ tripId, maxGuests });
 
   return (
     <section className="p-5 pb-10 lg:pb-5 lg:w-[370px] lg:shadow lg:border lg:border-gray-primary lg:rounded-lg lg:sticky lg:top-0">
@@ -59,6 +59,7 @@ const TripReservation = ({
                 error={!!errors.startDate}
                 errorMessage={errors.startDate?.message}
                 minDate={tripStartDate}
+                maxDate={endDateSelected || tripEndDate}
               />
             )}
           />
@@ -74,7 +75,7 @@ const TripReservation = ({
                 locale={"pt-BR"}
                 error={!!errors.endDate}
                 errorMessage={errors.endDate?.message}
-                minDate={endDateSelected || tripStartDate}
+                minDate={startDateSelected || tripStartDate}
                 maxDate={tripEndDate}
               />
             )}
