@@ -8,8 +8,9 @@ const Footer = () => {
         <Image
           src="/logo.png"
           alt="Logo do OptiTour"
-          width={150}
-          height={44.99}
+          width={390}
+          height={100}
+          className="w-48"
         />
       </Link>
       <p className="text-xs">Todos os direitos reservados.</p>

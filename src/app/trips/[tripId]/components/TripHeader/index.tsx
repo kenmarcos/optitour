@@ -23,24 +23,64 @@ const TripHeader = ({
   return (
     <section className="flex flex-col">
       <div className="h-[208px] mb-5 relative lg:hidden">
-        <Image src={coverImage} alt={name} fill className="object-cover" />
+        <Image
+          src={coverImage}
+          alt={name}
+          fill
+          className="object-cover"
+          sizes="100%"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPcwvC/HgAFVwI0U4SedgAAAABJRU5ErkJggg=="
+        />
       </div>
 
       <div className="hidden lg:grid grid-cols-[2fr,1fr,1fr] grid-rows-2 gap-2 rounded-2xl overflow-hidden order-2">
         <div className="relative row-span-2">
-          <Image src={coverImage} alt={name} fill className="object-cover" />
+          <Image
+            src={coverImage}
+            alt={name}
+            fill
+            className="object-cover"
+            sizes="100%"
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPcwvC/HgAFVwI0U4SedgAAAABJRU5ErkJggg=="
+          />
         </div>
 
         <div className="relative h-[200px] w-full">
-          <Image src={imagesUrl[0]} alt={name} fill className="object-cover" />
+          <Image
+            src={imagesUrl[0]}
+            alt={name}
+            fill
+            className="object-cover"
+            sizes="100%"
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPcwvC/HgAFVwI0U4SedgAAAABJRU5ErkJggg=="
+          />
         </div>
 
         <div className="relative h-[200px] w-full">
-          <Image src={imagesUrl[1]} alt={name} fill className="object-cover" />
+          <Image
+            src={imagesUrl[1]}
+            alt={name}
+            fill
+            className="object-cover"
+            sizes="100%"
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPcwvC/HgAFVwI0U4SedgAAAABJRU5ErkJggg=="
+          />
         </div>
 
         <div className="relative col-span-2">
-          <Image src={imagesUrl[2]} alt={name} fill className="object-cover" />
+          <Image
+            src={imagesUrl[2]}
+            alt={name}
+            fill
+            className="object-cover"
+            sizes="100%"
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPcwvC/HgAFVwI0U4SedgAAAABJRU5ErkJggg=="
+          />
         </div>
       </div>
 

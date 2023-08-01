@@ -16,9 +16,9 @@ const Header = () => {
           <Image
             src="/logo.png"
             alt="Logo do OptiTour"
-            width={150}
-            height={44.99}
-            className="sm:w-48 md:w-56"
+            width={390}
+            height={100}
+            className="w-48 md:w-60"
           />
         </Link>
 

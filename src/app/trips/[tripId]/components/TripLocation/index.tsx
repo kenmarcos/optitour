@@ -13,6 +13,7 @@ const TripLocation = () => {
           src="/map-mobile.png"
           alt="Mapa para mobile"
           fill
+          sizes="100%"
           className="object-cover lg:hidden"
         />
 
@@ -20,6 +21,7 @@ const TripLocation = () => {
           src="/map-desktop.png"
           alt="Mapa para desktop"
           fill
+          sizes="100%"
           className="object-cover hidden lg:block"
         />
       </div>
