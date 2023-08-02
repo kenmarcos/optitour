@@ -21,15 +21,17 @@ const Header = ({
 
   return (
     <header {...rest} className={headerClassName}>
-      <Image
-        src={tripImage}
-        alt={tripName}
-        width={124}
-        height={106}
-        className="rounded-xl"
-        placeholder="blur"
-        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPcwvC/HgAFVwI0U4SedgAAAABJRU5ErkJggg=="
-      />
+      {tripImage && (
+        <Image
+          src={tripImage}
+          alt={tripName}
+          width={124}
+          height={106}
+          className="rounded-xl"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPcwvC/HgAFVwI0U4SedgAAAABJRU5ErkJggg=="
+        />
+      )}
 
       <div className="text-gray-dark text-xs lg:text-sm">
         <h3 className="text-purple-dark font-medium text-sm lg:text-base">
