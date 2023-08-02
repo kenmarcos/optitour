@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,6 +13,8 @@ export const useTripReservation = ({
   tripId,
   maxGuests,
 }: UseTripReservationProps) => {
+  const router = useRouter();
+
   const tripReservationSchema = z.object({
     startDate: z
       .date()
@@ -75,6 +78,12 @@ export const useTripReservation = ({
 
       return;
     }
+
+    router.push(
+      `/trips/${tripId}/confirmation?startDate=${data.startDate?.toISOString()}&endDate=${data.endDate?.toISOString()}&guests=${
+        data.guests
+      }`
+    );
   };
 
   const startDateSelected = watch("startDate");
