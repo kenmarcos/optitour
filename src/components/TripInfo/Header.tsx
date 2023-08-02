@@ -5,10 +5,10 @@ import ReactCountryFlag from "react-country-flag";
 import { twMerge } from "tailwind-merge";
 
 interface HeaderProps extends ComponentProps<"header"> {
-  tripImage?: string;
-  tripName?: string;
-  tripLocation?: string;
-  tripCountryCode?: string;
+  tripImage: string;
+  tripName: string;
+  tripLocation: string;
+  tripCountryCode: string;
 }
 const Header = ({
   tripImage,
@@ -22,20 +22,22 @@ const Header = ({
   return (
     <header {...rest} className={headerClassName}>
       <Image
-        src="/Rectangle 9.png"
-        alt="trip image"
+        src={tripImage}
+        alt={tripName}
         width={124}
         height={106}
         className="rounded-xl"
+        placeholder="blur"
+        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPcwvC/HgAFVwI0U4SedgAAAABJRU5ErkJggg=="
       />
 
       <div className="text-gray-dark text-xs lg:text-sm">
         <h3 className="text-purple-dark font-medium text-sm lg:text-base">
-          Hotel Maravista
+          {tripName}
         </h3>
         <div className="flex gap-1 items-center">
-          <ReactCountryFlag countryCode="BR" svg />
-          <p>Rio de Janeiro, Brasil</p>
+          <ReactCountryFlag countryCode={tripCountryCode} svg />
+          <p>{tripLocation}</p>
         </div>
       </div>
     </header>

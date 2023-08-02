@@ -1,10 +1,55 @@
-import Image from "next/image";
-import ReactCountryFlag from "react-country-flag";
+"use client";
+
+import { useSession } from "next-auth/react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
 
 import TripInfo from "components/TripInfo";
 import Divider from "components/TripInfo/Divider";
 
-const TripConfirmation = () => {
+import { Trip } from "@prisma/client";
+import { formatPrice } from "utils/format";
+
+interface TripConfirmationProps {
+  tripId: string;
+}
+
+const TripConfirmation = ({ tripId }: TripConfirmationProps) => {
+  const [trip, setTrip] = useState<Trip>({} as Trip);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const { status, data } = useSession();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const fetchTrip = useCallback(async () => {
+    try {
+      const response = await fetch("/api/trips/check", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          tripId: tripId,
+          startDate: searchParams.get("startDate"),
+          endDate: searchParams.get("endDate"),
+        }),
+      });
+
+      const data = await response.json();
+
+      setTrip(data.trip);
+      setTotalPrice(data.totalPrice);
+    } catch (error) {
+      console.log(error);
+      router.push("/");
+    }
+  }, [searchParams, tripId, router]);
+
+  useEffect(() => {
+    fetchTrip();
+  }, [fetchTrip]);
+
   return (
     <section className="p-5 space-y-5">
       <h2 className="text-purple-dark font-semibold text-xl leading-8">
@@ -13,7 +58,12 @@ const TripConfirmation = () => {
 
       {/* CARD */}
       <TripInfo.Card>
-        <TripInfo.Header />
+        <TripInfo.Header
+          tripImage={trip?.coverImage}
+          tripName={trip?.name}
+          tripCountryCode={trip?.countryCode}
+          tripLocation={trip?.location}
+        />
 
         <Divider />
 
@@ -22,7 +72,7 @@ const TripConfirmation = () => {
 
           <div className="flex justify-between">
             <p>Total:</p>
-            <p className="font-semibold">R$ 3.390,00</p>
+            <p className="font-semibold">{formatPrice(totalPrice)}</p>
           </div>
         </TripInfo.Content>
       </TripInfo.Card>

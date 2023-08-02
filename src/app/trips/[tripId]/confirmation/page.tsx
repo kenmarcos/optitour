@@ -1,9 +1,13 @@
 import TripConfirmation from "./components/TripConfirmation";
 
-const Confirmation = () => {
+interface ConfirmationProps {
+  params: { tripId: string };
+}
+
+const Confirmation = ({ params }: ConfirmationProps) => {
   return (
     <main className="container mx-auto">
-      <TripConfirmation />
+      <TripConfirmation tripId={params.tripId} />
     </main>
   );
 };
