@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-light p-5 mt-14 flex flex-col items-center justify-center gap-2">
+    <footer className="h-[113.22px] bg-gray-light p-5 mt-14 flex flex-col items-center justify-center gap-2">
       <Link href="/">
         <Image
           src="/logo.png"

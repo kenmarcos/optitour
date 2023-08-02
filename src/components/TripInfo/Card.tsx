@@ -8,7 +8,7 @@ interface CardProps extends ComponentProps<"div"> {
 
 const Card = ({ children, ...rest }: CardProps) => {
   const cardClassName = twMerge(
-    "shadow-lg p-5 rounded-xl border border-gray-light",
+    "shadow-xl p-5 rounded-xl border border-gray-light",
     rest.className
   );
 

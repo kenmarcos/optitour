@@ -10,7 +10,7 @@ const Header = () => {
   const { status, data, isOpen, login, logout, toggleMenu } = useHeader();
 
   return (
-    <header className="max-h-[97.16px]">
+    <header className="h-[89.22px] md:h-[97.16px]">
       <div className="container mx-auto p-5 flex justify-between items-center">
         <Link href="/">
           <Image
