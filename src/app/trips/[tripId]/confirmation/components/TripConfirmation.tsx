@@ -50,6 +50,11 @@ const TripConfirmation = ({ tripId }: TripConfirmationProps) => {
     fetchTrip();
   }, [fetchTrip]);
 
+  if (status === "unauthenticated") {
+    router.push("/");
+    return;
+  }
+
   return (
     <section className="p-5 space-y-5">
       <h2 className="text-purple-dark font-semibold text-xl leading-8">
