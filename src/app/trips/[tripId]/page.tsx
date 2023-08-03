@@ -26,7 +26,7 @@ const TripDetails = async ({ params }: TripDetailsProps) => {
   if (!data) return null;
 
   return (
-    <main className="container mx-auto">
+    <>
       <TripHeader
         coverImage={data.coverImage}
         imagesUrl={data.imagesUrl}
@@ -57,7 +57,7 @@ const TripDetails = async ({ params }: TripDetailsProps) => {
       <hr className="hidden border-gray-primary my-5 lg:block" />
 
       <TripLocation />
-    </main>
+    </>
   );
 };
 
