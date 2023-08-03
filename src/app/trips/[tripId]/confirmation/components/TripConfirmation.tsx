@@ -70,8 +70,10 @@ const TripConfirmation = ({ tripId }: TripConfirmationProps) => {
           totalPaid: totalPrice,
         }),
       });
-      console.log("teste");
+
       toast.success("Reserva realizada com sucesso!");
+
+      router.push("/my-trips");
     } catch (error) {
       console.log(error);
       toast.error("Não foi possível realizar a reserva.");
