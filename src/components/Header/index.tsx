@@ -2,12 +2,16 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { HiBars3 } from "react-icons/hi2";
 
 import { useHeader } from "./useHeader";
 
 const Header = () => {
-  const { status, data, isOpen, login, logout, toggleMenu } = useHeader();
+  const { status, data, isOpen, setIsOpen, login, logout, toggleMenu } =
+    useHeader();
+
+  const path = usePathname();
 
   return (
     <header className="h-[89.22px] md:h-[97.16px]">
@@ -41,7 +45,7 @@ const Header = () => {
                 <HiBars3 size={24} className="sm:w-9 sm:h-9" />
 
                 <Image
-                  src={data?.user?.image!}
+                  src={data?.user.image!}
                   alt="Imagem do usuário"
                   width={24}
                   height={24}
@@ -50,10 +54,20 @@ const Header = () => {
               </button>
 
               {isOpen && (
-                <div className="bg-gray-light text-center mt-1 p-3 rounded absolute right-0 min-w-[120px] sm:w-36">
+                <div className="flex flex-col text-purple-primary font-bold text-xl bg-gray-light text-right mt-1 p-5 gap-3 rounded absolute right-0 min-w-[220px] sm:w-36">
+                  <Link
+                    href="/my-trips"
+                    onClick={() => setIsOpen(false)}
+                    className={`${
+                      path === "/my-trips" ? "text-purple-dark" : ""
+                    } hover:text-purple-dark`}
+                  >
+                    Minhas viagens
+                  </Link>
+
                   <button
                     onClick={logout}
-                    className="text-purple-primary font-bold hover:text-purple-dark text-xl"
+                    className="hover:text-purple-dark text-right"
                   >
                     Logout
                   </button>

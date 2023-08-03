@@ -15,6 +15,7 @@ export const useHeader = () => {
     status,
     data,
     isOpen,
+    setIsOpen,
     login,
     logout,
     toggleMenu,
