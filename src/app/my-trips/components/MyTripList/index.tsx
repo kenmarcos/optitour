@@ -1,20 +1,30 @@
-"use client";
-
-import { useCallback, useEffect } from "react";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
 import Button from "components/Button";
 import TripInfo from "components/TripInfo";
 
-const MyTripReservations = () => {
-  const fetchReservations = useCallback(async () => {
-    try {
-      const response = await fetch("/api/trips");
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
+import { authOptions } from "app/api/auth/[...nextauth]/route";
+import { format } from "date-fns";
+import { ptBR } from "date-fns/locale";
+import { prisma } from "lib/prisma";
+import { formatPrice } from "utils/format";
 
-  useEffect(() => {}, []);
+const MyTripReservations = async () => {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    redirect("/");
+  }
+
+  const reservations = await prisma.tripReservation.findMany({
+    where: {
+      userId: session.user.id,
+    },
+    include: {
+      trip: true,
+    },
+  });
 
   return (
     <section className="p-5">
@@ -22,41 +32,60 @@ const MyTripReservations = () => {
         Minhas viagens
       </h2>
 
-      <TripInfo.Card>
-        {/* <TripInfo.Header
-              tripImage={trip?.coverImage}
-              tripName={trip?.name}
-              tripCountryCode={trip?.countryCode}
-              tripLocation={trip?.location}
-            /> */}
+      {!reservations.length && (
+        <p className="mt-4 text-gray-dark">Nenhuma viagem encontrada</p>
+      )}
 
-        <TripInfo.Divider />
+      {reservations.length > 0 &&
+        reservations.map((reservation) => (
+          <TripInfo.Card key={reservation.id}>
+            <TripInfo.Header
+              tripImage={reservation.trip.coverImage}
+              tripName={reservation.trip.name}
+              tripCountryCode={reservation.trip.countryCode}
+              tripLocation={reservation.trip.location}
+            />
 
-        <TripInfo.Content>
-          <h4 className="font-semibold">Sobre a viagem</h4>
+            <TripInfo.Divider />
 
-          <p className="mt-4">Data</p>
-          <time>12 de Jul - 16 de Jul</time>
+            <TripInfo.Content>
+              <h4 className="font-semibold">Sobre a viagem</h4>
 
-          <p className="mt-4">Hóspedes</p>
-          <p>2 hóspedes </p>
-        </TripInfo.Content>
+              <p className="mt-4">Data</p>
+              <time>
+                {format(reservation.startDate, "dd 'de' MMM", {
+                  locale: ptBR,
+                })}{" "}
+                -{" "}
+                {format(reservation.endDate, "dd 'de' MMM", {
+                  locale: ptBR,
+                })}
+              </time>
 
-        <TripInfo.Divider />
+              <p className="mt-4">Hóspedes</p>
+              <p>
+                {reservation.guests} hóspede{reservation.guests > 1 ? "s" : ""}{" "}
+              </p>
+            </TripInfo.Content>
 
-        <TripInfo.Content>
-          <h4 className="font-semibold">Informações do pagamento</h4>
+            <TripInfo.Divider />
 
-          <div className="flex justify-between mt-4">
-            <p>Total:</p>
-            <p className="font-semibold">R$ 200,00</p>
-          </div>
+            <TripInfo.Content>
+              <h4 className="font-semibold">Informações do pagamento</h4>
 
-          <Button variant="danger" className="w-full mt-4">
-            Cancelar
-          </Button>
-        </TripInfo.Content>
-      </TripInfo.Card>
+              <div className="flex justify-between mt-4">
+                <p>Total:</p>
+                <p className="font-semibold">
+                  {formatPrice(Number(reservation.totalPaid))}
+                </p>
+              </div>
+
+              <Button variant="danger" className="w-full mt-4">
+                Cancelar
+              </Button>
+            </TripInfo.Content>
+          </TripInfo.Card>
+        ))}
     </section>
   );
 };
