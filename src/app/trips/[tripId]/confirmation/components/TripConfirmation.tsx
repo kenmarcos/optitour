@@ -8,7 +8,6 @@ import { toast } from "react-toastify";
 
 import Button from "components/Button";
 import TripInfo from "components/TripInfo";
-import Divider from "components/TripInfo/Divider";
 
 import { Trip } from "@prisma/client";
 import { format } from "date-fns";
@@ -115,7 +114,7 @@ const TripConfirmation = ({ tripId }: TripConfirmationProps) => {
               tripLocation={trip?.location}
             />
 
-            <Divider />
+            <TripInfo.Divider />
 
             <TripInfo.Content>
               <h4 className="font-semibold">Informações do preço</h4>
@@ -127,21 +126,17 @@ const TripConfirmation = ({ tripId }: TripConfirmationProps) => {
             </TripInfo.Content>
           </TripInfo.Card>
 
-          <div className="text-purple-dark leading-6 space-y-4">
-            <div>
-              <p>Data</p>
-              <time>
-                {format(startDate, "dd 'de' MMM", { locale: ptBR })} -{" "}
-                {format(endDate, "dd 'de' MMM", { locale: ptBR })}
-              </time>
-            </div>
+          <div className="text-purple-dark leading-6">
+            <p>Data</p>
+            <time>
+              {format(startDate, "dd 'de' MMM", { locale: ptBR })} -{" "}
+              {format(endDate, "dd 'de' MMM", { locale: ptBR })}
+            </time>
 
-            <div>
-              <p>Hóspedes</p>
-              <p>
-                {guests} hóspede{Number(guests) > 1 ? "s" : ""}
-              </p>
-            </div>
+            <p className="mt-4">Hóspedes</p>
+            <p>
+              {guests} hóspede{Number(guests) > 1 ? "s" : ""}
+            </p>
           </div>
 
           <Button onClick={buyTrip} className="w-full">
