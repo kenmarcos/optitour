@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { HiArrowPath } from "react-icons/hi2";
+import { toast } from "react-toastify";
 
 import Button from "components/Button";
 import TripInfo from "components/TripInfo";
@@ -53,6 +54,30 @@ const TripConfirmation = ({ tripId }: TripConfirmationProps) => {
       setIsLoading(false);
     }
   }, [searchParams, tripId, router]);
+
+  const buyTrip = async () => {
+    try {
+      await fetch("/api/trips/reservation", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          tripId: tripId,
+          userId: data?.user.id,
+          startDate: searchParams.get("startDate"),
+          endDate: searchParams.get("endDate"),
+          guests: Number(searchParams.get("guests")),
+          totalPaid: totalPrice,
+        }),
+      });
+      console.log("teste");
+      toast.success("Reserva realizada com sucesso!");
+    } catch (error) {
+      console.log(error);
+      toast.error("Não foi possível realizar a reserva.");
+    }
+  };
 
   useEffect(() => {
     fetchTrip();
@@ -119,7 +144,9 @@ const TripConfirmation = ({ tripId }: TripConfirmationProps) => {
             </div>
           </div>
 
-          <Button className="w-full">Finalizar Compra</Button>
+          <Button onClick={buyTrip} className="w-full">
+            Finalizar Compra
+          </Button>
         </>
       )}
     </section>

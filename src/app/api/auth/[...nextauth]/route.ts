@@ -19,7 +19,7 @@ const authOptions: AuthOptions = {
       session.user = {
         ...session.user,
         id: user.id,
-      } as { id: string; name: string; email: string };
+      };
 
       return session;
     },

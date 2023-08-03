@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -76,6 +77,7 @@ export const useTripReservation = ({
         message: "Está data já está reservada",
       });
 
+      toast.error("Teste");
       return;
     }
 
