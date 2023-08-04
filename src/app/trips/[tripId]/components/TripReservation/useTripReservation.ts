@@ -1,3 +1,4 @@
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -15,6 +16,7 @@ export const useTripReservation = ({
   maxGuests,
 }: UseTripReservationProps) => {
   const router = useRouter();
+  const { status } = useSession();
 
   const tripReservationSchema = z.object({
     startDate: z
@@ -50,6 +52,11 @@ export const useTripReservation = ({
   });
 
   const submitForm = async (data: TripReservationSchema) => {
+    if (status === "unauthenticated") {
+      toast.error("Realize login para fazer uma reserva");
+      return;
+    }
+
     const response = await fetch("/api/trips/check", {
       method: "POST",
       headers: {

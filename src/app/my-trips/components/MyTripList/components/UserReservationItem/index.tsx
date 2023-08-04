@@ -1,19 +1,54 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import { Dispatch, SetStateAction } from "react";
+import { toast } from "react-toastify";
+
 import Button from "components/Button";
 import TripInfo from "components/TripInfo";
 
 import { Trip, TripReservation } from "@prisma/client";
+import { Decimal, GetResult } from "@prisma/client/runtime";
 import * as Dialog from "@radix-ui/react-dialog";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { formatPrice } from "utils/format";
 
+interface Reservation extends TripReservation {
+  trip: Trip;
+}
 interface UserReservationItemProps {
   reservation: TripReservation & { trip: Trip };
+  setReservations: Dispatch<SetStateAction<Reservation[]>>;
 }
 
-const UserReservationItem = ({ reservation }: UserReservationItemProps) => {
+const UserReservationItem = ({
+  reservation,
+  setReservations,
+}: UserReservationItemProps) => {
+  const router = useRouter();
+  const deleteReservation = async () => {
+    try {
+      fetch(`/api/trips/reservation/${reservation.id}`, {
+        method: "DELETE",
+      });
+
+      setReservations((currentState) => {
+        const reservations = currentState.filter(
+          (item) => item.id !== reservation.id
+        );
+
+        return reservations;
+      });
+
+      toast.success("Reserva cancelada com sucesso!");
+    } catch (error) {
+      console.log(error);
+
+      toast.error("Não foi possível cancelar a reserva");
+    }
+  };
+
   return (
     <TripInfo.Card key={reservation.id}>
       <TripInfo.Header
@@ -30,11 +65,11 @@ const UserReservationItem = ({ reservation }: UserReservationItemProps) => {
 
         <p className="mt-4">Data</p>
         <time>
-          {format(reservation.startDate, "dd 'de' MMM", {
+          {format(new Date(reservation.startDate), "dd 'de' MMM", {
             locale: ptBR,
           })}{" "}
           -{" "}
-          {format(reservation.endDate, "dd 'de' MMM", {
+          {format(new Date(reservation.endDate), "dd 'de' MMM", {
             locale: ptBR,
           })}
         </time>
@@ -86,7 +121,12 @@ const UserReservationItem = ({ reservation }: UserReservationItemProps) => {
                   </Button>
                 </Dialog.Close>
 
-                <Button className="w-full sm:w-auto">Cancelar a reserva</Button>
+                <Button
+                  onClick={deleteReservation}
+                  className="w-full sm:w-auto"
+                >
+                  Cancelar a reserva
+                </Button>
               </div>
             </Dialog.Content>
           </Dialog.Portal>

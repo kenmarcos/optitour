@@ -23,7 +23,7 @@ const TripConfirmation = ({ tripId }: TripConfirmationProps) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { status, data } = useSession();
+  const { data } = useSession();
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -83,11 +83,6 @@ const TripConfirmation = ({ tripId }: TripConfirmationProps) => {
   useEffect(() => {
     fetchTrip();
   }, [fetchTrip]);
-
-  if (status === "unauthenticated") {
-    router.push("/");
-    return;
-  }
 
   const startDate = new Date(searchParams.get("startDate") as string);
   const endDate = new Date(searchParams.get("endDate") as string);
