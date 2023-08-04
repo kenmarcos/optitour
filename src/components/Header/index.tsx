@@ -56,6 +56,16 @@ const Header = () => {
               {isOpen && (
                 <div className="flex flex-col text-purple-primary font-bold text-xl bg-gray-light text-right mt-1 p-5 gap-3 rounded absolute right-0 min-w-[220px] sm:w-36">
                   <Link
+                    href="/"
+                    onClick={() => setIsOpen(false)}
+                    className={`${
+                      path === "/" ? "text-purple-dark" : ""
+                    } hover:text-purple-dark`}
+                  >
+                    Home
+                  </Link>
+
+                  <Link
                     href="/my-trips"
                     onClick={() => setIsOpen(false)}
                     className={`${
