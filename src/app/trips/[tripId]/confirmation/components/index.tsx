@@ -21,14 +21,13 @@ interface TripConfirmationProps {
 const TripConfirmation = ({ tripId }: TripConfirmationProps) => {
   const [trip, setTrip] = useState<Trip>({} as Trip);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { data } = useSession();
   const router = useRouter();
   const searchParams = useSearchParams();
 
   const fetchTrip = useCallback(async () => {
-    setIsLoading(true);
     try {
       const response = await fetch("/api/trips/check", {
         method: "POST",
