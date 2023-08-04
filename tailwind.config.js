@@ -21,6 +21,7 @@ module.exports = {
         red: {
           primary: "#FE3838",
         },
+        "modal-overlay": "rgba(0, 0, 0, 0.44)",
       },
       backgroundImage: {
         hero: "url(/world-map.png)",

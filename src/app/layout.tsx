@@ -27,6 +27,7 @@ export default function RootLayout({
         <NextAuthProvider>
           <ToastProvider>
             <Header />
+
             <main className="container mx-auto min-h-[calc(100vh-89.22px-169.22px)] md:min-h-[calc(100vh-97.16px-169.22px)]">
               {children}
             </main>

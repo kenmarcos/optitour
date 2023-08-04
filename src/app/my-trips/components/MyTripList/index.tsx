@@ -1,14 +1,10 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
-import Button from "components/Button";
-import TripInfo from "components/TripInfo";
+import UserReservationItem from "./components/UserReservationItem";
 
 import { authOptions } from "app/api/auth/[...nextauth]/route";
-import { format } from "date-fns";
-import { ptBR } from "date-fns/locale";
 import { prisma } from "lib/prisma";
-import { formatPrice } from "utils/format";
 
 const MyTripReservations = async () => {
   const session = await getServerSession(authOptions);
@@ -39,54 +35,10 @@ const MyTripReservations = async () => {
       {reservations.length > 0 && (
         <div className="gap-5 md:grid md:grid-cols-2 lg:grid-cols-3">
           {reservations.map((reservation) => (
-            <TripInfo.Card key={reservation.id}>
-              <TripInfo.Header
-                tripImage={reservation.trip.coverImage}
-                tripName={reservation.trip.name}
-                tripCountryCode={reservation.trip.countryCode}
-                tripLocation={reservation.trip.location}
-              />
-
-              <TripInfo.Divider />
-
-              <TripInfo.Content>
-                <h4 className="font-semibold">Sobre a viagem</h4>
-
-                <p className="mt-4">Data</p>
-                <time>
-                  {format(reservation.startDate, "dd 'de' MMM", {
-                    locale: ptBR,
-                  })}{" "}
-                  -{" "}
-                  {format(reservation.endDate, "dd 'de' MMM", {
-                    locale: ptBR,
-                  })}
-                </time>
-
-                <p className="mt-4">Hóspedes</p>
-                <p>
-                  {reservation.guests} hóspede
-                  {reservation.guests > 1 ? "s" : ""}{" "}
-                </p>
-              </TripInfo.Content>
-
-              <TripInfo.Divider />
-
-              <TripInfo.Content>
-                <h4 className="font-semibold">Informações do pagamento</h4>
-
-                <div className="flex justify-between mt-4">
-                  <p>Total:</p>
-                  <p className="font-semibold">
-                    {formatPrice(Number(reservation.totalPaid))}
-                  </p>
-                </div>
-
-                <Button variant="danger" className="w-full mt-4">
-                  Cancelar
-                </Button>
-              </TripInfo.Content>
-            </TripInfo.Card>
+            <UserReservationItem
+              key={reservation.id}
+              reservation={reservation}
+            />
           ))}
         </div>
       )}
