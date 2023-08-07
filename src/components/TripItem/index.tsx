@@ -17,7 +17,10 @@ const TripItem = ({ trip }: TripItemProps) => {
           src={trip.coverImage}
           alt={trip.name}
           fill
+          sizes="100%"
           className="object-cover rounded-2xl transition-all group-hover:scale-[1.02]"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPcwvC/HgAFVwI0U4SedgAAAABJRU5ErkJggg=="
         />
       </div>
 

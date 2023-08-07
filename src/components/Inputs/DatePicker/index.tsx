@@ -2,14 +2,17 @@
 
 import { LegacyRef, forwardRef } from "react";
 import DatePickerComponent, {
+  ReactDatePicker,
   ReactDatePickerProps,
   registerLocale,
 } from "react-datepicker";
+import { StrictModifierNames } from "react-popper";
+
+import { useDatePicker } from "./useDatePicker";
 
 import ptBR from "date-fns/locale/pt-BR";
 
 import "react-datepicker/dist/react-datepicker.css";
-import { useDatePicker } from "./useDatePicker";
 
 registerLocale("pt-BR", ptBR);
 
@@ -25,7 +28,7 @@ const DatePicker = (
     errorMessage = "",
     ...rest
   }: DatePickerProps,
-  ref: LegacyRef<HTMLInputElement> | undefined
+  ref: LegacyRef<ReactDatePicker<StrictModifierNames, undefined>> | undefined
 ) => {
   const { datePickerClassName } = useDatePicker({ error, className });
 
@@ -37,6 +40,7 @@ const DatePicker = (
         locale="pt-BR"
         dateFormat="dd/MM/yyyy"
         enableTabLoop={false}
+        ref={ref}
       />
 
       {error && errorMessage && (
