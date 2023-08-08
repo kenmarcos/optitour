@@ -13,6 +13,7 @@ const QuickSearchItem = ({ icon, searchText, title }: QuickSearchItemProps) => {
       <Link
         href={`/trips/search?text=${searchText}`}
         className="flex flex-col items-center"
+        prefetch={false}
       >
         {icon}
         <p>{title}</p>
