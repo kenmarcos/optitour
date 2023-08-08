@@ -22,7 +22,7 @@ const RecommendedTrips = async () => {
       <SectionHeader title="Destinos recomendados" />
 
       <ul className="flex justify-center gap-10 flex-wrap lg:justify-between">
-        {data.map((trip) => (
+        {data.slice(0, 4).map((trip) => (
           <li key={trip.id} className="basis-[280px]">
             <TripItem trip={trip} />
           </li>
