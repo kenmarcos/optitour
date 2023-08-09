@@ -26,7 +26,7 @@ const Header = ({
         alt={tripName}
         width={124}
         height={106}
-        className="rounded-xl w-auto h-auto"
+        className="rounded-xl h-[94px] object-cover"
         placeholder="blur"
         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPcwvC/HgAFVwI0U4SedgAAAABJRU5ErkJggg=="
       />
