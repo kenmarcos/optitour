@@ -34,7 +34,7 @@ export const POST = async (req: Request) => {
   } = body;
 
   const session = await stripe.checkout.sessions.create({
-    success_url: "http://localhost:3000/my-trips",
+    success_url: process.env.HOST_URL! + "/my-trips",
     metadata: {
       tripId,
       userId: userSession?.user.id,
