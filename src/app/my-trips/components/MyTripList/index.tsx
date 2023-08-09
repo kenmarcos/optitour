@@ -1,8 +1,11 @@
 "use client";
 
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { HiArrowPath } from "react-icons/hi2";
+
+import Button from "components/Button";
 
 import UserReservationItem from "./components/UserReservationItem";
 
@@ -14,6 +17,8 @@ interface Reservation extends TripReservation {
 const MyTripReservations = () => {
   const [reservations, setReservations] = useState<Reservation[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const router = useRouter();
 
   const { data } = useSession();
 
@@ -50,7 +55,15 @@ const MyTripReservations = () => {
       {!isLoading && (
         <>
           {reservations?.length === 0 && (
-            <p className="mt-4 text-gray-dark">Nenhuma viagem encontrada</p>
+            <>
+              <p className="mt-4 text-gray-dark">Nenhuma viagem encontrada</p>
+              <Button
+                onClick={() => router.push("/")}
+                className="w-full md:w-72"
+              >
+                Fazer reserva
+              </Button>
+            </>
           )}
 
           {reservations?.length > 0 && (

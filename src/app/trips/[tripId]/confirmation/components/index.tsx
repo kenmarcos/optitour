@@ -10,6 +10,7 @@ import Button from "components/Button";
 import TripInfo from "components/TripInfo";
 
 import { Trip } from "@prisma/client";
+import { loadStripe } from "@stripe/stripe-js";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { formatPrice } from "utils/format";
@@ -55,24 +56,30 @@ const TripConfirmation = ({ tripId }: TripConfirmationProps) => {
 
   const buyTrip = async () => {
     try {
-      await fetch("/api/trips/reservation", {
+      const res = await fetch("/api/payment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           tripId: tripId,
-          userId: data?.user.id,
+          name: trip.name,
+          description: trip.description,
+          coverImage: trip.coverImage,
           startDate: searchParams.get("startDate"),
           endDate: searchParams.get("endDate"),
           guests: Number(searchParams.get("guests")),
-          totalPaid: totalPrice,
+          totalPrice,
         }),
       });
 
-      toast.success("Reserva realizada com sucesso!");
+      const data = await res.json();
 
-      router.push("/my-trips");
+      const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY!);
+
+      await stripe?.redirectToCheckout({
+        sessionId: data.sessionId,
+      });
     } catch (error) {
       console.log(error);
       toast.error("Não foi possível realizar a reserva.");

@@ -11,7 +11,7 @@ interface TripItemProps {
 
 const TripItem = ({ trip }: TripItemProps) => {
   return (
-    <Link href={`/trips/${trip.id}`} className="block group">
+    <Link href={`/trips/${trip.id}`} className="block group" prefetch={false}>
       <div className="relative h-[280px] mb-3">
         <Image
           src={trip.coverImage}
