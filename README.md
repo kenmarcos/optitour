@@ -17,21 +17,25 @@
 ## 🖥️ Sobre o Projeto
 
 <div align="center">
-    <img src="https://uploads-ssl.webflow.com/5ea82056771c9dd4b6f61bdc/60d0889c139877fe45366e87_Blog_main_improve_ad_quality_Dean_20210621.png" width=800/>
+    <img src="/public/home.png" width=800/>
     <br/>
     <br/>
-    <a href="http://marcos-kuribayashi.vercel.app/">
+    <a href="https://optitour.vercel.app/">
         <img src="https://img.shields.io/badge/demo-ver%20aplicação-blue?style=for-the-badge" alt="badge-usage" >
     </a>
 </div>
 
 <br/>
 
-Escrever o que é a apliação.
+> Projeto desenvolvido durante o evento [Full Stack Week](https://fullstackclub.com.br/fsw/) (07/23)
 
-Escrever os objetivos da aplicação.
+Optitour é uma plataforma de reserva de viagens. ✈️
 
-Descrever brevemente algumas funcionalidades.
+Com ele é possível pesquisar viagens, ver as informações detalhadas de cada uma delas e fazer uma reserva da viagem desejada.
+
+O projeto foi desenvolvido utilizando TypeScript, Next.js, React, Tailwind CSS, Prisma, banco de dados PostgreSQL, entre outras tecnologias.
+
+Além disso, a aplicação conta com autenticação através de conta do Google e integração de pagamentos via Stripe.
 
 <!-- FUNCIONALIDADES -->
 
@@ -49,7 +53,7 @@ Descrever brevemente algumas funcionalidades.
   - [x] Reserva de viagem
 - [x] Tela de Confirmação da Viagem
   - [x] Checagem de informações da viagem desejada
-  - [x] Pagamento da compra da viagem
+  - [x] Pagamento da compra da viagem via Stripe
 - [x] Tela "Minhas Viagens"
   - [x] Lista de viagens compradas pelo usuário
   - [x] Cancelamento da viagem
@@ -58,14 +62,12 @@ Descrever brevemente algumas funcionalidades.
 
 ## 🎨 Layout
 
-O layout da aplicação está disponível no Figma: [![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)](<https://www.figma.com/file/2NP9iNookuR5mTvKtbufmm/FSW-Project-(Copy)?type=design&node-id=194-1733&mode=design&t=1HD2evpOPpSd9HE1-0>)
+A aplicação foi baseada no seguinte layout: [![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)](<https://www.figma.com/file/2NP9iNookuR5mTvKtbufmm/FSW-Project-(Copy)?type=design&node-id=194-1733&mode=design&t=1HD2evpOPpSd9HE1-0>)
 
 <p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Screenshot_Dashboard.png/800px-Screenshot_Dashboard.png?20190516105902" width=500>
+  <img src="/public/tripDetails.png" width=500>
 
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Screenshot_Dashboard.png/800px-Screenshot_Dashboard.png?20190516105902" width=500>
-
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Screenshot_Dashboard.png/800px-Screenshot_Dashboard.png?20190516105902" width=500>
+  <img src="/public/myTrips.png" width=500>
 </p>
 
 <!-- TECNOLOGIAS -->
@@ -79,7 +81,9 @@ Para o desenvolvimento desse projeto, as seguintes ferramentas foram utilizadas:
 - **[TypeScript](https://www.typescriptlang.org/)**
 - **[Tailwind CSS](https://tailwindcss.com/)**
 - **[Prisma](https://www.prisma.io/)**
+- **[Supabase](https://supabase.com/)**
 - **[Next Auth](https://next-auth.js.org/)**
+- **[Stripe](https://stripe.com/br)**
 - **[React Hook Form](https://www.react-hook-form.com/)**
 - **[Zod](https://zod.dev/)**
 - **[Radix UI](https://www.radix-ui.com/)**
