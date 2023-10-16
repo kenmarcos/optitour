@@ -17,7 +17,7 @@
 ## 🖥️ Sobre o Projeto
 
 <div align="center">
-    <img src="/public/home.png" width=800/>
+    <img src=".github/home.png" width=800/>
     <br/>
     <br/>
     <a href="https://optitour.vercel.app/">
@@ -65,9 +65,9 @@ Além disso, a aplicação conta com autenticação através de conta do Google 
 A aplicação foi baseada no seguinte layout: [![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)](<https://www.figma.com/file/2NP9iNookuR5mTvKtbufmm/FSW-Project-(Copy)?type=design&node-id=194-1733&mode=design&t=1HD2evpOPpSd9HE1-0>)
 
 <p align="center">
-  <img src="/public/tripDetails.png" width=500>
+  <img src=".github/tripDetails.png" width=500>
 
-  <img src="/public/myTrips.png" width=500>
+  <img src=".github/myTrips.png" width=500>
 </p>
 
 <!-- TECNOLOGIAS -->
