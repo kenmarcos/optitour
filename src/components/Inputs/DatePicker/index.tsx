@@ -1,46 +1,40 @@
 "use client";
 
 import { LegacyRef, forwardRef } from "react";
-import DatePickerComponent, {
-  ReactDatePicker,
-  ReactDatePickerProps,
+import ReactDatePickerComponent, {
+  DatePickerProps as ReactDatePickerProps,
   registerLocale,
 } from "react-datepicker";
-import { StrictModifierNames } from "react-popper";
-
-import { useDatePicker } from "./useDatePicker";
 
 import ptBR from "date-fns/locale/pt-BR";
-
 import "react-datepicker/dist/react-datepicker.css";
+import { twMerge } from "tailwind-merge";
 
 registerLocale("pt-BR", ptBR);
 
-interface DatePickerProps extends ReactDatePickerProps {
+type DatePickerProps = ReactDatePickerProps & {
   error?: boolean;
   errorMessage?: string;
-}
+};
 
 const DatePicker = (
-  {
-    className = "",
-    error = false,
-    errorMessage = "",
-    ...rest
-  }: DatePickerProps,
-  ref: LegacyRef<ReactDatePicker<StrictModifierNames, undefined>> | undefined
+  { className, error, errorMessage, ...rest }: DatePickerProps,
+  ref: LegacyRef<HTMLInputElement> | undefined
 ) => {
-  const { datePickerClassName } = useDatePicker({ error, className });
+  const datePickerClassName = twMerge(
+    "rounded-lg border border-gray-300 bg-white p-2 text-sm font-normal text-primaryDarker placeholder-black placeholder-opacity-20 outline-none transition-all focus:ring-1 focus:ring-primary",
+    error ? "border-red-500" : "",
+    className
+  );
 
   return (
     <div className="flex w-full flex-col">
-      <DatePickerComponent
-        {...rest}
+      <ReactDatePickerComponent
         className={datePickerClassName}
         locale="pt-BR"
         dateFormat="dd/MM/yyyy"
         enableTabLoop={false}
-        ref={ref}
+        {...rest}
       />
 
       {error && errorMessage && (
