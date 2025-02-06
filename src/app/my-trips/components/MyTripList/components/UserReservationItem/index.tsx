@@ -8,7 +8,6 @@ import Button from "components/Button";
 import TripInfo from "components/TripInfo";
 
 import { Trip, TripReservation } from "@prisma/client";
-import { Decimal, GetResult } from "@prisma/client/runtime";
 import * as Dialog from "@radix-ui/react-dialog";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
