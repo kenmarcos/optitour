@@ -11,17 +11,20 @@ const generateSearchQuery = (
     OR: [
       {
         name: {
-          search: text.split(" ").join("&"),
+          contains: text.split(" ").join("&"),
+          mode: "insensitive",
         },
       },
       {
         description: {
-          search: text.split(" ").join("&"),
+          contains: text.split(" ").join("&"),
+          mode: "insensitive",
         },
       },
       {
         location: {
-          search: text.split(" ").join("&"),
+          contains: text.split(" ").join("&"),
+          mode: "insensitive",
         },
       },
     ],
